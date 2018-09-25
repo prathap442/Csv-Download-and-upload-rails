@@ -1,0 +1,16 @@
+<p>
+  Download:
+  <%= link_to "CSV", products_path(format: "csv") %> |
+  <%= link_to "Excel", products_path(format: "xls") %>
+</p>
+
+<p> Import Products </p>
+--------------------------------
+<%=form_tag import_products_path,multipart: true do%>
+  <%=file_field_tag :file%>
+  <%=submit_tag "Import"%>
+<%end%>
+--------------------------------
+<%@products.each do |p|%>
+  <%=p.attributes%><br/>
+<%end%>
